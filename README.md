@@ -10,7 +10,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-  res.render('flowers', { title: 'Search Results - s' }flowers);
+  res.render('furniture', { title: 'Search Results - s' }furniture);
 });
 
 module.exports = router;
