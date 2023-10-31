@@ -3,9 +3,9 @@ Good things takes time
 
 https://fb23wb06bobba.onrender.com
 
-#h1 class:furniture
+class:furniture
 
-##h2 attributes:
+attributes:
 
 itemName
 
