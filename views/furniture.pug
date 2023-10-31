@@ -13,8 +13,3 @@ const furnitureItems = [
   { itemName: 'cot',   quantity: 1, cost:150  },
 ];
 
-router.get('/', (req, res) => {
-  res.render('furniture', { title: 'Search Results - Furniture', furnitureItems });
-});
-
-module.exports = router;
