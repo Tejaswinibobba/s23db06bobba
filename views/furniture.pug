@@ -4,13 +4,13 @@ block content
   h1= title
   p Welcome to #{title}
   p Search Results furniture 
-  -const furnitureItems = [{ itemName: 'Chair', quantity: 5, cost: 50  },{ itemName: 'Table', quantity: 2, cost: 120 },{ itemName: 'cot',   quantity: 1, cost:150  }]
-
   .container-fluid 
-  .row
-  .col-sm-2 
-  p itemName:#{item.itemName}
-  p itemName:#{item.quantity}
-  p itemName:#{ item.cost}
+    .row
+      -const results = [{ itemName: 'Chair', quantity: 5, cost: 50  },{ itemName: 'Table', quantity: 2, cost: 120 },{ itemName: 'cot',   quantity: 1, cost:150  }]
+      each item in results
+        .col-sm-2 
+          p #{item.itemName}
+          p #{item.quantity}
+          p #{item.cost}
 
-  a(href="http://localhost:3000/furniture") Link to Endpoint
+  
