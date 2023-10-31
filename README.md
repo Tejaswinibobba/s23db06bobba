@@ -3,14 +3,17 @@ Good things takes time
 
 https://fb23wb06bobba.onrender.com
 
-class:furniture
+# class:furniture
 
-attributes:
+## attributes:
 
-itemName
+1.itemName:
+-`itemName`(string):itemName type of furniture.
 
-quantity
+2.quantity:
+-`quantity`(number):quantity of the furniture.
 
-cost
+3.cost:
+-`cost`(number):cost of the furniture
 
 
