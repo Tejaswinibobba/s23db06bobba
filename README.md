@@ -8,7 +8,7 @@ https://fb23wb06bobba.onrender.com
 ## attributes:
 
 1.itemName:
--`itemName`(string):itemName type of furniture.
+-`itemName`(string):Name  of furniture.
 
 2.quantity:
 -`quantity`(number):quantity of the furniture.
