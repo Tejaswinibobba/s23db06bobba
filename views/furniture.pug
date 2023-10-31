@@ -8,8 +8,9 @@ block content
 const express = require('express');
 const router = express.Router();
 const furnitureItems = [
-  { itemName: 'Chair', quantity: 5, cost: 50 },
+  { itemName: 'Chair', quantity: 5, cost: 50  },
   { itemName: 'Table', quantity: 2, cost: 120 },
+  { itemName: 'cot',   quantity: 1, cost:150  },
 ];
 
 router.get('/', (req, res) => {
