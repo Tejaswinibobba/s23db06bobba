@@ -1,0 +1,76 @@
+-- Bobba Tejaswini
+-- SQL Assignment 02
+
+USE clearwater;
+
+#1
+SELECT category_desc, category_id FROM category;
+
+#2
+SELECT MAX(price) AS MaximumPrice, MIN(price) AS MinimumPrice, AVG(price) AS AveragePrice FROM inventory;
+
+#3
+SELECT COUNT(*) AS QuantityOrdered FROM order_line;
+
+#4
+SELECT *
+FROM inventory
+WHERE item_size = 'L';
+
+#5
+SELECT cust_id, order_id, order_date, meth_pmt
+FROM cust_order
+WHERE order_date > '2001-01-01';
+
+#6
+SELECT item_id, item_size, qoh
+FROM inventory
+WHERE color = 'Light Grey' AND price > 29.95;
+
+#7
+SELECT category_desc
+FROM category
+WHERE category_desc LIKE '%clothing%';
+
+
+#8
+SELECT last, first, city
+FROM customer
+WHERE cust_id > 150 AND (state = 'WI' OR d_phone LIKE '715%' OR e_phone LIKE '715%');
+
+
+#9
+SELECT *
+FROM inventory
+ORDER BY price ASC, inv_id;
+
+
+#10
+SELECT *
+FROM inventory
+WHERE (color LIKE '%a%' OR color LIKE 'Bri%') AND item_id > 800 AND qoh <> 0;
+
+
+#11
+SELECT order_id, SUM(order_quantity) AS QuantityOrdered
+FROM order_line
+GROUP BY order_id;
+
+
+#12
+SELECT item_id, COUNT(inv_id) AS count
+FROM inventory
+GROUP BY item_id
+ORDER BY count ASC;
+
+
+#13
+SELECT DISTINCT order_id
+FROM order_line;
+
+#14
+SELECT item_id, COUNT(inv_id) AS countOfInv, AVG(price) AS average_price, SUM(qoh) AS QoH_available
+FROM inventory
+GROUP BY item_id
+HAVING QoH_available > 25
+ORDER BY QoH_available ASC;
