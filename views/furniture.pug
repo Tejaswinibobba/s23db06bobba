@@ -6,8 +6,8 @@ block content
   p Search Results furniture 
   .container-fluid 
     .row
-      -const results = [{ itemName: 'Chair', quantity: 5, cost: 50  },{ itemName: 'Table', quantity: 2, cost: 120 },{ itemName: 'cot',   quantity: 1, cost:150  }]
-      each item, index in results
+      -let result = results
+      each item, index in result
         .col-sm-2(onclick=`buy(${index})`) 
           p #{item.itemName}
           p #{item.quantity}
