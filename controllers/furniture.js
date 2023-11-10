@@ -49,9 +49,17 @@ exports.furniture_view_all_Page = async function(req, res) {
 res.send('NOT IMPLEMENTED: furniture list');
 };*/
 // for a specific furniture.
-exports.furniture_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: furniture detail: ' + req.params.id);
+exports.furniture_detail = async function(req, res) {
+console.log("detail" + req.params.id)
+try {
+result = await furniture.findById( req.params.id)
+res.send(result)
+} catch (error) {
+res.status(500)
+res.send(`{"error": document for id ${req.params.id} not found`);
+}
 };
+
 // Handle furniture create on POST.
 /*exports.furniture_create_post = function(req, res) {
 res.send('NOT IMPLEMENTED: furniture create POST');
@@ -61,6 +69,23 @@ exports.furniture_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Costume delete DELETE ' + req.params.id);
 };
 // Handle furniture update form on PUT.
-exports.furniture_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: Costume update PUT' + req.params.id);
+
+exports.furniture_update_put = async function(req, res) {
+console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+try {
+let toUpdate = await furniture.findById( req.params.id)
+// Do updates of properties
+if(req.body.itemName)
+toUpdate.itemName = req.body.itemName;
+if(req.body.quantity) toUpdate.quantity = req.body.quantity;
+if(req.body.cost) toUpdate.cost = req.body.cost;
+let result = await toUpdate.save();
+console.log("Sucess " + result)
+res.send(result)
+} catch (err) {
+res.status(500)
+res.send(`{"error": ${err}: Update for id ${req.params.id}
+failed`);
+}
 };
