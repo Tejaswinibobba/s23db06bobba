@@ -65,9 +65,18 @@ res.send(`{"error": document for id ${req.params.id} not found`);
 res.send('NOT IMPLEMENTED: furniture create POST');
 };*/
 // Handle furniture delete form on DELETE.
-exports.furniture_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: Costume delete DELETE ' + req.params.id);
-};
+exports.furniture_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await furniture.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    
 // Handle furniture update form on PUT.
 
 exports.furniture_update_put = async function(req, res) {
@@ -89,3 +98,58 @@ res.send(`{"error": ${err}: Update for id ${req.params.id}
 failed`);
 }
 };
+// Handle a show one view with id specified by query
+exports.furniture_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await furniture.findById( req.query.id)
+    res.render('furnituredetail',
+    { title: 'furniture Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+// Handle building the view for creating a costume.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.furniture_create_Page = function(req, res) {
+console.log("create view")
+try{
+res.render('furniturecreate', { title: 'furniture Create'});
+}
+catch(err){
+res.status(500)
+res.send(`{'error': '${err}'}`);
+}
+};
+
+// Handle building the view for updating a furniture.
+// query provides the id
+exports.furniture_update_Page = async function(req, res) {
+console.log("update view for item "+req.query.id)
+try{
+let result = await furniture.findById(req.query.id)
+res.render('furnitureupdate', { title: 'furniture Update', toShow: result });
+}
+catch(err){
+res.status(500)
+res.send(`{'error': '${err}'}`);
+}
+};
+// Handle a delete one view with id from query
+exports.furniture_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await furniture.findById(req.query.id)
+    res.render('furnituredelete', { title: 'furniture Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+    
+    

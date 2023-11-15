@@ -1,0 +1,23 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null)
+    h2(class='fur') No instance to detail
+  else
+    - let furnitureid = toShow._id
+    - let itemName = toShow.itemName
+    - let quantity = toShow.quantity
+    - let cost = toShow.cost
+    div
+      div.row
+        div(class='furnitureAttr mr-3') furniture ID is:
+        div #{furnitureid}
+      div.row
+        div(class='furnitureAttr mr-3') furniture name is:
+        div #{itemName}
+      div.row
+        div(class='furnitureAttr mr-3') furniture quantity is:
+        div #{quantity}
+      div.row
+        div(class='furnitureAttr mr-3') furniture Cost is:
+        div #{cost}
