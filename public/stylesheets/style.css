@@ -13,3 +13,9 @@ a {
   .fur{
     background-color:palegreen;
   }
+  h2{
+  background-color: blueviolet;
+  color: brown;
+  font-family: 'Courier New', Courier, monospace;
+
+  }
