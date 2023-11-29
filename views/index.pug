@@ -1,22 +1,16 @@
 extends layout
-
+ 
 block content
-  h1= title
-  p Welcome to #{title}
-  p welcome to Tejaswini Bobba page
-  button.btn.btn-outline-primary(type="button",onclick="goFaster()") press me
-  div#faster Increase the speed.
-  script.
-    var mph = 20;
-    var change = 1;
+  if (!user)
+    a(href="/Login") Login
+    br
+    a(href="/register") Register
+ 
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/furniture") Take me to furniture
+    br
+    a(href="/logout") Logout
 
-    function goFaster() {
-      mph += change;
-      change += 1;
-      var div = document.getElementById("faster");
-      div.innerText = "MPH " + mph + " with change " + change;
-    }
-  a(href='/furniture') Link to Endpoint
-    
 
 
